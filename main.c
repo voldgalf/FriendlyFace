@@ -65,8 +65,6 @@ int main()
 
         //SDL_SetTextureColorMod(faceGraphic->texture, GOLD.r, GOLD.g, GOLD.b);
 
-        printf("FRAME\n");
-
         if(!faceGraphic->texture) {
             faceGraphic->texture = IMG_LoadTexture(display->renderer, "C:\\GroundFaller\\Worker_Icon.png");
         }
