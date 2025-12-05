@@ -39,10 +39,10 @@ sudo apt install build-essential cmake
 
 ```bash
 # Install the RobotDevelopment repo (which includes FriendlyFace)
-git clone https://github.com/voldgalf/RobotDevelopment.git
+git clone https://github.com/voldgalf/FriendlyFace.git
 
 # Navigate towards the installed repo's directory
-cd RobotDevelopment/FriendlyFace
+cd FriendlyFace
 
 # Create the build files
 mkdir build
