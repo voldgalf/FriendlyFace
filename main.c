@@ -1,18 +1,31 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <math.h>
 #include <SDL3/SDl.h>
 #include <SDL3_ttf/SDL_ttf.h>
 #include <SDL3_image/SDL_image.h>
 #include "include/display.h"
 #include "include/graphics.h"
 #include "include/utility.h"
+#include <pthread.h>
+#include <stdatomic.h>
+
+pthread_mutex_t emotionLock;
 
 FFACE_Display* display;
 SDL_Event event;
 
 SDL_Color WHITE = {.r=255, .g=255, .b=255, .a=255};
 SDL_Color BLACK = {.r=0, .g=0, .b=0, .a=255};
+
+typedef enum {
+    normal,
+} emotions;
+
+_Atomic(emotions) currentEmotionAtomic;
+
+void updateEmotion(emotions newEmotion) {
+    atomic_store_explicit(&currentEmotionAtomic, newEmotion, memory_order_seq_cst);
+}
+
 
 void errorPopUp() {
     SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR, "ERROR", SDL_GetError(), display->window);
@@ -28,7 +41,7 @@ bool FFACE_UpdateWindowSize() {
 int main()
 {
     printf("Initializing SDL3");
-
+    SDL_SetHint(SDL_HINT_VIDEO_DRIVER, "offscreen");
     if (!SDL_Init(SDL_INIT_EVENTS)) {
         printf("SDL_Init Error: %s\n", SDL_GetError());
         return 1;
@@ -63,8 +76,7 @@ int main()
     FFACE_UpdateWindowSize();
     do {
 
-        //SDL_SetTextureColorMod(faceGraphic->texture, GOLD.r, GOLD.g, GOLD.b);
-
+        emotions currentEmotion = atomic_load_explicit(&currentEmotion, memory_order_seq_cst);
         if(!faceGraphic->texture) {
             faceGraphic->texture = IMG_LoadTexture(display->renderer, "C:\\GroundFaller\\Worker_Icon.png");
         }
