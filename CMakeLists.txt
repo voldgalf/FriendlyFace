@@ -3,16 +3,7 @@ project(GroundFaller C)
 
 set(CMAKE_C_STANDARD 23)
 
-add_executable(GroundFaller main.c
-        include/display.h
-        src/graphics.c
-        include/graphics.h
-        src/timer.c
-        include/timer.h
-        src/display.c
-        include/display.h
-        src/utility.c
-        include/utility.h)
+add_executable(GroundFaller main.c)
 
 target_include_directories(GroundFaller PRIVATE
         "C:/c_libraries/SDL3-3.2.26/x86_64-w64-mingw32/include"
