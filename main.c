@@ -40,7 +40,7 @@ bool FFACE_UpdateWindowSize() {
 int main()
 {
     printf("Initializing SDL3");
-    //SDL_SetHint(SDL_HINT_VIDEO_DRIVER, "offscreen");
+
     if (!SDL_Init(SDL_INIT_EVENTS)) {
         printf("SDL_Init Error: %s\n", SDL_GetError());
         return 1;
