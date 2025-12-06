@@ -40,7 +40,7 @@ bool FFACE_UpdateWindowSize() {
 
 int main()
 {
-    printf("Initializing SDL3");
+    printf("-Initializing SDL3-\n");
 
     if (!SDL_Init(SDL_INIT_EVENTS)) {
         printf("SDL_Init Error: %s\n", SDL_GetError());
@@ -49,13 +49,15 @@ int main()
 
     display = FFACE_CreateDisplay();
 
-    printf("Creating Window\n");
-    display->window = SDL_CreateWindow("My Game", 480, 480, SDL_WINDOW_RESIZABLE);
+    printf("-Creating Window-\n");
+
+    display->window = SDL_CreateWindow("FriendlyFace", 480, 480, SDL_WINDOW_RESIZABLE);
     if(!display->window) {
         printf("%s\n", SDL_GetError());
     }
 
-    printf("Creating Renderer\n");
+    printf("-Creating Renderer-\n");
+
     display->renderer = SDL_CreateRenderer(display->window, NULL);
     if(!display->renderer) {
         printf("%s\n", SDL_GetError());
