@@ -28,12 +28,8 @@ This is completely optional and is **not** required for the program to run corre
 # Update apt before continuing
 sudo apt update
 
-# FriendlyFace requires SDl3, to install it run:
-sudo apt-get install libsdl3-dev
-
-sudo apt-get install libsdl3-ttf-dev
-
-sudo apt-get install libsdl3-image-dev
+# FriendlyFace requires SDL3, SDL3-TTF, and SDL3-Image, to install it run:
+sudo apt-get install libsdl3-dev libsdl3-ttf-dev libsdl3-image-dev
 
 # Building FriendlyFace requires CMake, to install it run:
 sudo apt install build-essential cmake
