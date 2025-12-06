@@ -4,7 +4,7 @@ project(FriendlyFace CXX)
 set(CMAKE_CXX_STANDARD 20)
 
 file(GLOB_RECURSE SRC "./src/*.cpp")
-file(GLOB_RECURSE INCLUDE "./include/*.h")
+file(GLOB_RECURSE INCLUDE "./include/*.hpp")
 
 add_executable(FriendlyFace main.cpp ${SRC} ${INCLUDE})
 
