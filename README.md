@@ -4,25 +4,17 @@
 
 Humanoid robot faces are unnerving, why not make them friendly looking?
 
-Introducing *FriendlyFace*, a face display program built in C++ using SDL3,\
-controlled with ROS 2.
+Introducing *FriendlyFace*, a face display program built in C++ using SDL3, controlled with ROS 2.
 
 #### What is FriendlyFace?
 
-FriendlyFace is a C++ SDL program designed to display different faces\
-depending on the read `emotionValue`.
+FriendlyFace is a C++ SDL program designed to display different faces depending on the read `emotionValue`.
 
-#### Logic
-
-FriendlyFace's main SDL logic runs on the main thread, while a second thread\
-reads from the ROS topic `EMOTION_TOPIC`, and changes the `currentEmotion`\
-value.
+A separate thread updates `emotionValue` through ROS 2, avoiding interference with the main thread.
 
 ### Installation
 
-#### Installing dependencies
-
-##### Linux
+#### Linux
 
 ```bash
 # Update apt before continuing
