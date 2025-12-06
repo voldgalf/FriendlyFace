@@ -9,5 +9,7 @@ file(GLOB_RECURSE INCLUDE "./include/*.h")
 add_executable(FriendlyFace main.c ${SRC} ${INCLUDE
 
 find_package(SDL3 REQUIRED CONFIG COMPONENTS SDL3-shared)
+find_package(SDL3-Image REQUIRED CONFIG COMPONENTS SDL3-shared)
+
 
 target_link_libraries(FriendlyFace PRIVATE SDL3::SDL3)
