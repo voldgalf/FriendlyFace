@@ -7,7 +7,7 @@
 
 FFACE_Graphic* FFACE_CreateGraphic() {
 
-    FFACE_Graphic* newGraphic = malloc(sizeof (FFACE_Graphic));
+    FFACE_Graphic* newGraphic = new FFACE_Graphic;
     newGraphic->texture = NULL;
     newGraphic->surface = NULL;
     return newGraphic;

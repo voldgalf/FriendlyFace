@@ -1,12 +1,12 @@
 cmake_minimum_required(VERSION 3.31)
-project(FriendlyFace C)
+project(FriendlyFace CXX)
 
-set(CMAKE_C_STANDARD 23)
+set(CMAKE_CXX_STANDARD 23)
 
-file(GLOB_RECURSE SRC "./src/*.c")
+file(GLOB_RECURSE SRC "./src/*.cpp")
 file(GLOB_RECURSE INCLUDE "./include/*.h")
 
-add_executable(FriendlyFace main.c ${SRC} ${INCLUDE})
+add_executable(FriendlyFace main.cpp ${SRC} ${INCLUDE})
 
 find_package(SDL3 REQUIRED CONFIG COMPONENTS SDL3-shared)
 

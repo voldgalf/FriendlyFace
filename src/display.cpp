@@ -9,7 +9,7 @@
 
 
 FFACE_Display* FFACE_CreateDisplay() {
-    FFACE_Display* newDisplay = malloc(sizeof (FFACE_Display));
+    FFACE_Display* newDisplay = new FFACE_Display;
 
     newDisplay->window = NULL;
     newDisplay->renderer = NULL;

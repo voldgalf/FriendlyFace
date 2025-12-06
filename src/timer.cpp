@@ -5,7 +5,7 @@
 #include "../include/timer.h"
 
 FFACE_Timer* FFACE_CreateTimer(int goalFrames) {
-    FFACE_Timer* newTimer = malloc(sizeof (FFACE_Timer));
+    FFACE_Timer* newTimer = new FFACE_Timer;
     newTimer->currentFrame = 0;
     newTimer->goalFrames = goalFrames;
     return newTimer;

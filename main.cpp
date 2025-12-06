@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include <SDL3/SDL.h>
 #include <SDL3_image/SDL_image.h>
 #include "include/display.h"
@@ -6,6 +5,7 @@
 #include "include/utility.h"
 #include <pthread.h>
 #include <stdatomic.h>
+#include <iostream>
 
 pthread_mutex_t emotionLock;
 
@@ -15,15 +15,6 @@ SDL_Event event;
 SDL_Color WHITE = {.r=255, .g=255, .b=255, .a=255};
 SDL_Color BLACK = {.r=0, .g=0, .b=0, .a=255};
 
-typedef enum {
-    normal,
-} emotions;
-
-_Atomic(emotions) currentEmotionAtomic;
-
-void updateEmotion(emotions newEmotion) {
-    atomic_store_explicit(&currentEmotionAtomic, newEmotion, memory_order_seq_cst);
-}
 
 
 void errorPopUp() {
@@ -40,27 +31,27 @@ bool FFACE_UpdateWindowSize() {
 
 int main()
 {
-    printf("-Initializing SDL3-\n");
+    std::cout << "-Initializing SDL3-\n";
 
     if (!SDL_Init(SDL_INIT_EVENTS)) {
-        printf("SDL_Init Error: %s\n", SDL_GetError());
+        std::cout << "SDL_Init Error: " << SDL_GetError() << "\n";
         return 1;
     }
 
     display = FFACE_CreateDisplay();
 
-    printf("-Creating Window-\n");
+    std::cout << "-Creating Window-\n";
 
     display->window = SDL_CreateWindow("FriendlyFace", 480, 480, SDL_WINDOW_RESIZABLE);
     if(!display->window) {
-        printf("%s\n", SDL_GetError());
+        std::cout << SDL_GetError() << "\n";
     }
 
     printf("-Creating Renderer-\n");
 
     display->renderer = SDL_CreateRenderer(display->window, NULL);
     if(!display->renderer) {
-        printf("%s\n", SDL_GetError());
+        std::cout << SDL_GetError() << "\n";
     }
 
     bool running = true;
@@ -69,7 +60,6 @@ int main()
     FFACE_UpdateWindowSize();
     do {
 
-        emotions currentEmotion = atomic_load_explicit(&currentEmotion, memory_order_seq_cst);
         if(!faceGraphic->texture) {
             faceGraphic->texture = IMG_LoadTexture(display->renderer, "../imgs/WorkerFace_Default.png");
             if(!faceGraphic->texture) {
