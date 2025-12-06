@@ -4,10 +4,7 @@
 #include "include/graphics.hpp"
 #include "include/utility.hpp"
 #include <pthread.h>
-#include <stdatomic.h>
 #include <iostream>
-
-pthread_mutex_t emotionLock;
 
 FFACE_Display* display;
 SDL_Event event;
@@ -96,7 +93,7 @@ int main()
                 FFACE_UpdateWindowSize();
                 if(faceGraphic->texture) {
                     SDL_DestroyTexture(faceGraphic->texture);
-                    faceGraphic->texture = NULL;
+                    faceGraphic->texture = nullptr;
                 }
             }
             if(event.type == SDL_EVENT_QUIT) {

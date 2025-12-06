@@ -8,8 +8,8 @@
 FFACE_Graphic* FFACE_CreateGraphic() {
 
     FFACE_Graphic* newGraphic = new FFACE_Graphic;
-    newGraphic->texture = NULL;
-    newGraphic->surface = NULL;
+    newGraphic->texture = nullptr;
+    newGraphic->surface = nullptr;
     return newGraphic;
 }
 
@@ -17,12 +17,12 @@ bool FFACE_ClearGraphic(FFACE_Graphic *graphic) {
 
     if(graphic->texture) {
         SDL_DestroyTexture(graphic->texture);
-        graphic->texture = NULL;
+        graphic->texture = nullptr;
     }
 
     if(graphic->surface) {
         SDL_DestroySurface(graphic->surface);
-        graphic->surface = NULL;   // optional safety
+        graphic->surface = nullptr;   // optional safety
     }
 
 

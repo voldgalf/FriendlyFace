@@ -11,8 +11,8 @@
 FFACE_Display* FFACE_CreateDisplay() {
     FFACE_Display* newDisplay = new FFACE_Display;
 
-    newDisplay->window = NULL;
-    newDisplay->renderer = NULL;
+    newDisplay->window = nullptr;
+    newDisplay->renderer = nullptr;
     newDisplay->w = 0;
     newDisplay->h = 0;
     return newDisplay;
