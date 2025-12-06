@@ -34,6 +34,7 @@ bool FFACE_UpdateWindowSize() {
     if(!SDL_GetCurrentRenderOutputSize(display->renderer,&display->w, &display->h)) {
         errorPopUp();
     }
+    return true;
 }
 
 
