@@ -68,15 +68,17 @@ int main()
 
         emotions currentEmotion = atomic_load_explicit(&currentEmotion, memory_order_seq_cst);
         if(!faceGraphic->texture) {
-            faceGraphic->texture = IMG_LoadTexture(display->renderer, "C:\\FriendlyFace\\Worker_Icon.png");
+            faceGraphic->texture = IMG_LoadTexture(display->renderer, "C:\\FriendlyFace\\WorkerFace_Default.png");
         }
-        float scale = 0.70f * display->h / faceGraphic->texture->h;
+
+        float scale = 0.75f * display->h / faceGraphic->texture->h;
 
         faceGraphic->rect.w = faceGraphic->texture->w * scale;
         faceGraphic->rect.h = faceGraphic->texture->h * scale;
 
         faceGraphic->rect.x = (display->w - faceGraphic->rect.w) / 2;
         faceGraphic->rect.y = (display->h - faceGraphic->rect.h) / 2;
+
         FFACE_SetRendererColor(display->renderer, BLACK);
 
         SDL_RenderClear(display->renderer);
@@ -101,6 +103,9 @@ int main()
                     faceGraphic->texture = NULL;
                 }
             }
+            if(event.type == SDL_EVENT_QUIT) {
+                running = false;
+            }
         }
 
         //Clean Up
@@ -110,6 +115,7 @@ int main()
     } while(running);
 
     FFACE_DestroyGraphic(faceGraphic);
+    SDL_Quit();
 
     return 0;
 }
