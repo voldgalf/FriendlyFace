@@ -8,12 +8,8 @@
 FFACE_Graphic* FFACE_CreateGraphic() {
 
     FFACE_Graphic* newGraphic = malloc(sizeof (FFACE_Graphic));
-    FFACE_TextGraphic* newTextGraphic = malloc(sizeof (FFACE_TextGraphic));
-
     newGraphic->texture = NULL;
     newGraphic->surface = NULL;
-    newGraphic->textGraphic = newTextGraphic;
-    newGraphic->textGraphic->text = NULL;
     return newGraphic;
 }
 
@@ -29,10 +25,6 @@ bool FFACE_ClearGraphic(FFACE_Graphic *graphic) {
         graphic->surface = NULL;   // optional safety
     }
 
-    if (graphic->textGraphic && graphic->textGraphic->text) {
-        TTF_DestroyText(graphic->textGraphic->text);
-        graphic->textGraphic->text = NULL;   // optional safety
-    }
 
     return true;
 }
@@ -40,8 +32,6 @@ bool FFACE_ClearGraphic(FFACE_Graphic *graphic) {
 bool FFACE_DestroyGraphic(FFACE_Graphic *graphic) {
 
     FFACE_ClearGraphic(graphic);
-
-    free(graphic->textGraphic);
 
     free(graphic);
 

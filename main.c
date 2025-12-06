@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <SDL3/SDL.h>
-#include <SDL3_ttf/SDL_ttf.h>
 #include <SDL3_image/SDL_image.h>
 #include "include/display.h"
 #include "include/graphics.h"
@@ -58,15 +57,6 @@ int main()
     printf("Creating Renderer\n");
     display->renderer = SDL_CreateRenderer(display->window, NULL);
     if(!display->renderer) {
-        printf("%s\n", SDL_GetError());
-    }
-
-    TTF_Init();
-
-    printf("Creating Text FFACE\n");
-    display->textEngine = TTF_CreateRendererTextEngine(display->renderer);
-
-    if(!display->textEngine) {
         printf("%s\n", SDL_GetError());
     }
 

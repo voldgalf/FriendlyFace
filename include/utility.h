@@ -41,5 +41,4 @@ bool FFACE_SetRendererColor(SDL_Renderer *renderer, SDL_Color color);
  * true - completed without errors
  * false - completed with errors
  */
-bool FFACE_SetTextColor(TTF_Text *text, SDL_Color color);
 #endif //FFACE_UTILITY_H

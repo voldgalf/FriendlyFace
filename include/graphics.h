@@ -17,11 +17,6 @@
         w  - width of text
         h - height of text
 */
-typedef struct {
-    TTF_Text* text;
-    int w, h;
-} FFACE_TextGraphic;
-
 
 /*
     Struct: FFACE_Graphic
@@ -38,7 +33,6 @@ typedef struct {
     SDL_Texture* texture;
     SDL_Surface* surface;
 
-    FFACE_TextGraphic* textGraphic;
 } FFACE_Graphic;
 
 /**

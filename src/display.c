@@ -13,7 +13,6 @@ FFACE_Display* FFACE_CreateDisplay() {
 
     newDisplay->window = NULL;
     newDisplay->renderer = NULL;
-    newDisplay->textEngine = NULL;
     newDisplay->w = 0;
     newDisplay->h = 0;
     return newDisplay;

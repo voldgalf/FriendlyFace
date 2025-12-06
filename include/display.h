@@ -16,7 +16,6 @@
 typedef struct {
     SDL_Window* window;
     SDL_Renderer* renderer;
-    TTF_TextEngine* textEngine;
     int w,h;
 } FFACE_Display;
 

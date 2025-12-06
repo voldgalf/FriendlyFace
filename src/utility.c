@@ -12,12 +12,3 @@ bool FFACE_SetRendererColor(SDL_Renderer *renderer, SDL_Color color) {
     return true;
 
 }
-
-bool FFACE_SetTextColor(TTF_Text *text, SDL_Color color) {
-
-    if(!TTF_SetTextColor(text, color.r, color.g, color.b, color.a)) {
-        return false;
-    }
-    return true;
-
-}
