@@ -31,6 +31,10 @@ sudo apt update
 # FriendlyFace requires SDl3, to install it run:
 sudo apt-get install libsdl3-dev
 
+sudo apt-get install libsdl3-ttf-dev
+
+sudo apt-get install libsdl3-image-dev
+
 # Building FriendlyFace requires CMake, to install it run:
 sudo apt install build-essential cmake
 ```
