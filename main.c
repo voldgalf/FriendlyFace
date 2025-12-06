@@ -70,6 +70,9 @@ int main()
         emotions currentEmotion = atomic_load_explicit(&currentEmotion, memory_order_seq_cst);
         if(!faceGraphic->texture) {
             faceGraphic->texture = IMG_LoadTexture(display->renderer, "..\\imgs\\WorkerFace_Default.png");
+            if(!faceGraphic->texture) {
+                errorPopUp();
+            }
         }
 
         float scale = 0.75f * display->h / faceGraphic->texture->h;
