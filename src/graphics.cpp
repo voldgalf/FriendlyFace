@@ -2,7 +2,7 @@
 // Created by brick on 11/26/2025.
 //
 
-#include "../include/graphics.h"
+#include "../include/graphics.hpp"
 
 
 FFACE_Graphic* FFACE_CreateGraphic() {

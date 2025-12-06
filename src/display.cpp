@@ -2,7 +2,7 @@
 // Created by brick on 11/26/2025.
 //
 
-#include "../include/display.h"
+#include "../include/display.hpp"
 //
 // Created by brick on 11/25/2025.
 //

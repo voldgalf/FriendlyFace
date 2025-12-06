@@ -2,7 +2,7 @@
 // Created by brick on 11/26/2025.
 //
 
-#include "../include/timer.h"
+#include "../include/timer.hpp"
 
 FFACE_Timer* FFACE_CreateTimer(int goalFrames) {
     FFACE_Timer* newTimer = new FFACE_Timer;

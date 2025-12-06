@@ -2,7 +2,7 @@
 // Created by brick on 11/26/2025.
 //
 
-#include "../include/utility.h"
+#include "../include/utility.hpp"
 
 bool FFACE_SetRendererColor(SDL_Renderer *renderer, SDL_Color color) {
 
