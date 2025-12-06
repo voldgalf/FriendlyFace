@@ -5,7 +5,7 @@
 #ifndef FFACE_TIMERS_H
 #define FFACE_TIMERS_H
 
-#include <SDL3/SDl.h>
+#include <SDL3/SDL.h>
 #include <SDL3_ttf/SDL_ttf.h>
 #include <stdlib.h>
 

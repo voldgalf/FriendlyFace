@@ -5,7 +5,7 @@
 // Created by brick on 11/25/2025.
 //
 
-#include <SDL3/SDl.h>
+#include <SDL3/SDL.h>
 #include <SDL3_ttf/SDL_ttf.h>
 #include <stdlib.h>
 /*

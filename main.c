@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <SDL3/SDl.h>
+#include <SDL3/SDL.h>
 #include <SDL3_ttf/SDL_ttf.h>
 #include <SDL3_image/SDL_image.h>
 #include "include/display.h"
@@ -41,7 +41,7 @@ bool FFACE_UpdateWindowSize() {
 int main()
 {
     printf("Initializing SDL3");
-    SDL_SetHint(SDL_HINT_VIDEO_DRIVER, "offscreen");
+    //SDL_SetHint(SDL_HINT_VIDEO_DRIVER, "offscreen");
     if (!SDL_Init(SDL_INIT_EVENTS)) {
         printf("SDL_Init Error: %s\n", SDL_GetError());
         return 1;
