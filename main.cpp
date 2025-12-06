@@ -1,8 +1,8 @@
 #include <SDL3/SDL.h>
 #include <SDL3_image/SDL_image.h>
-#include "include/display.h"
-#include "include/graphics.h"
-#include "include/utility.h"
+#include "include/display.hpp"
+#include "include/graphics.hpp"
+#include "include/utility.hpp"
 #include <pthread.h>
 #include <stdatomic.h>
 #include <iostream>
