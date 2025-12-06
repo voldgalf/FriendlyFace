@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.31)
 project(FriendlyFace CXX)
 
-set(CMAKE_CXX_STANDARD 23)
+set(CMAKE_CXX_STANDARD 20)
 
 file(GLOB_RECURSE SRC "./src/*.cpp")
 file(GLOB_RECURSE INCLUDE "./include/*.h")
