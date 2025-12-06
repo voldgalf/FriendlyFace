@@ -2,20 +2,7 @@
 
 ### Overview
 
-A simple customizable robot face written in C with SDL.
-
-#### Features
-
-- Customizable faces
-- Emotional controlled expressions
-  
-#### Emotional Face Controls protocol
-
-The protocol allows for emotion controlled facial expressions, via socket connections with an *emotion server*
-
-The Emotional Face Controls protocol is seperate from the main thread, running in a second thread.
-
-This is completely optional and is **not** required for the program to run correctly.
+A ROS 2 controlled digital face built with C++ and SDL3
 
 ### Installation
 
