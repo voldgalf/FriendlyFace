@@ -18,6 +18,10 @@ void errorPopUp() {
     SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR, "ERROR", SDL_GetError(), display->window);
 }
 
+void errorPopUp(std::string str) {
+    SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR, "ERROR", str.c_str(), display->window);
+}
+
 
 bool FFACE_UpdateWindowSize() {
     if(!SDL_GetCurrentRenderOutputSize(display->renderer,&display->w, &display->h)) {
@@ -28,23 +32,6 @@ bool FFACE_UpdateWindowSize() {
 
 int main()
 {
-
-    inipp::Ini<char> ini;
-
-    std::ifstream iniStream("../config.ini");
-
-    if(!iniStream.is_open()) {
-        std::cout << "config.ini does NOT exist\n";
-        return -1;
-    }
-
-    ini.parse(iniStream);
-
-    std::string dbServer = "";
-
-    inipp::get_value(ini.sections["DatabaseSettings"], "Server", dbServer);
-
-    std::cout << dbServer << "\n";
 
     std::cout << "-Initializing SDL3-\n";
     if (!SDL_Init(SDL_INIT_EVENTS)) {
@@ -72,12 +59,32 @@ int main()
 
     FFACE_UpdateWindowSize();
 
+
+    inipp::Ini<char> ini;
+
+    std::ifstream iniStream("../config.ini");
+
+    if(!iniStream.is_open()) {
+        std::cout << "config.ini does NOT exist\n";
+        errorPopUp("config.ini does NOT exist");
+        return -1;
+    }
+
+    ini.parse(iniStream);
+
+    std::string dbServer = "";
+
+    inipp::get_value(ini.sections["DatabaseSettings"], "Server", dbServer);
+
+    std::cout << dbServer << "\n";
+
     do {
 
         if(!faceGraphic.graphic->texture) {
             faceGraphic.graphic->texture = IMG_LoadTexture(display->renderer, "../imgs/WorkerFace_Default.png");
             if(!faceGraphic.graphic->texture) {
                 errorPopUp();
+                return -1;
             }
         }
 
@@ -99,6 +106,7 @@ int main()
 
         if(!SDL_RenderTexture(display->renderer, faceGraphic.graphic->texture, NULL, &faceGraphic.graphic->rect)) {
             errorPopUp();
+            return -1;
         }
 
         SDL_FlushRenderer(display->renderer);
