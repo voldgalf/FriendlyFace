@@ -50,3 +50,6 @@ cmake ..
 # Build FriendlyFace
 cmake --build .
 ```
+
+# License
+[MIT License](/LICENSE.txt)
