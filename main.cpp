@@ -72,16 +72,15 @@ int main()
 
     ini.parse(iniStream);
 
-    std::string dbServer = "";
-
-    inipp::get_value(ini.sections["DatabaseSettings"], "Server", dbServer);
-
-    std::cout << dbServer << "\n";
+    std::string currentEmotion = "default";
 
     do {
 
         if(!faceGraphic.graphic->texture) {
-            faceGraphic.graphic->texture = IMG_LoadTexture(display->renderer, "../imgs/WorkerFace_Default.png");
+            std::string faceURL = "";
+            inipp::get_value(ini.sections["EMOTION_URLS"], currentEmotion, faceURL);
+            faceURL = "../imgs/" + faceURL;
+            faceGraphic.graphic->texture = IMG_LoadTexture(display->renderer, faceURL.c_str());
             if(!faceGraphic.graphic->texture) {
                 errorPopUp();
                 return -1;
