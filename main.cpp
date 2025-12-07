@@ -75,7 +75,7 @@ int main()
     do {
 
         if(!faceGraphic.graphic->texture) {
-            faceGraphic.graphic->texture = IMG_LoadTexture(display->renderer, "../imgs/WorkerFace_Maintenance.png");
+            faceGraphic.graphic->texture = IMG_LoadTexture(display->renderer, "../imgs/WorkerFace_Default.png");
             if(!faceGraphic.graphic->texture) {
                 errorPopUp();
             }
