@@ -8,9 +8,7 @@ Introducing *FriendlyFace*, a face display program built in C++ using SDL3, cont
 
 #### What is FriendlyFace?
 
-FriendlyFace is a C++ SDL program designed to display different faces depending on the read `emotionValue`.
-
-A separate thread updates `emotionValue` through ROS 2, avoiding interference with the main thread.
+FriendlyFace is a C++ SDL program designed to display different faces depending on the read `emotionValue` variable. A separate thread updates `emotionValue`, avoiding interference with the main thread.
 
 ### Installing Dependencies
 
