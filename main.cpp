@@ -5,6 +5,8 @@
 #include "include/utility.hpp"
 #include <pthread.h>
 #include <iostream>
+#include <fstream>
+#include "include/inipp.h"
 
 FFACE_Display* display;
 SDL_Event event;
@@ -28,6 +30,21 @@ bool FFACE_UpdateWindowSize() {
 
 int main()
 {
+
+    inipp::Ini<char> ini;
+
+    std::ifstream iniStream("../config.ini");
+    if(!iniStream.is_open()) {
+        std::cout << "config.ini does NOT exist\n";
+    }
+    ini.parse(iniStream);
+
+    std::string dbServer = "";
+
+    inipp::get_value(ini.sections["DatabaseSettings"], "Server", dbServer);
+
+    std::cout << dbServer << "\n";
+
     std::cout << "-Initializing SDL3-\n";
 
     if (!SDL_Init(SDL_INIT_EVENTS)) {
