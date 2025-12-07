@@ -70,24 +70,25 @@ int main()
 
     bool running = true;
 
-    FFACE_Graphic* faceGraphic = FFACE_CreateGraphic();
+    FFACE_Graphic faceGraphic;
+
     FFACE_UpdateWindowSize();
     do {
 
-        if(!faceGraphic->texture) {
-            faceGraphic->texture = IMG_LoadTexture(display->renderer, "../imgs/WorkerFace_Default.png");
-            if(!faceGraphic->texture) {
+        if(!faceGraphic.graphic->texture) {
+            faceGraphic.graphic->texture = IMG_LoadTexture(display->renderer, "../imgs/WorkerFace_Default.png");
+            if(!faceGraphic.graphic->texture) {
                 errorPopUp();
             }
         }
 
-        float scale = 0.75f * display->h / faceGraphic->texture->h;
+        float scale = 0.75f * display->h / faceGraphic.graphic->texture->h;
 
-        faceGraphic->rect.w = faceGraphic->texture->w * scale;
-        faceGraphic->rect.h = faceGraphic->texture->h * scale;
+        faceGraphic.graphic->rect.w = faceGraphic.graphic->texture->w * scale;
+        faceGraphic.graphic->rect.h = faceGraphic.graphic->texture->h * scale;
 
-        faceGraphic->rect.x = (display->w - faceGraphic->rect.w) / 2;
-        faceGraphic->rect.y = (display->h - faceGraphic->rect.h) / 2;
+        faceGraphic.graphic->rect.x = (display->w - faceGraphic.graphic->rect.w) / 2;
+        faceGraphic.graphic->rect.y = (display->h - faceGraphic.graphic->rect.h) / 2;
 
         FFACE_SetRendererColor(display->renderer, BLACK);
 
@@ -95,9 +96,9 @@ int main()
 
         FFACE_SetRendererColor(display->renderer, WHITE);
 
-        //SDL_RenderRect(display->renderer, &faceGraphic->rect);
+        //SDL_RenderRect(display->renderer, &faceGraphic.graphic->rect);
 
-        if(!SDL_RenderTexture(display->renderer, faceGraphic->texture, NULL, &faceGraphic->rect)) {
+        if(!SDL_RenderTexture(display->renderer, faceGraphic.graphic->texture, NULL, &faceGraphic.graphic->rect)) {
             errorPopUp();
         }
 
@@ -108,9 +109,9 @@ int main()
         while(SDL_PollEvent(&event)) {
             if(event.type == SDL_EVENT_WINDOW_RESIZED) {
                 FFACE_UpdateWindowSize();
-                if(faceGraphic->texture) {
-                    SDL_DestroyTexture(faceGraphic->texture);
-                    faceGraphic->texture = nullptr;
+                if(faceGraphic.graphic->texture) {
+                    SDL_DestroyTexture(faceGraphic.graphic->texture);
+                    faceGraphic.graphic->texture = nullptr;
                 }
             }
             if(event.type == SDL_EVENT_QUIT) {
@@ -124,7 +125,7 @@ int main()
        SDL_Delay(40);
     } while(running);
 
-    FFACE_DestroyGraphic(faceGraphic);
+    faceGraphic.FFACE_DestroyGraphic();
     SDL_Quit();
 
     return 0;

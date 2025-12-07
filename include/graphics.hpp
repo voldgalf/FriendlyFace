@@ -32,36 +32,13 @@ typedef struct {
     SDL_Texture* texture;
     SDL_Surface* surface;
 
-} FFACE_Graphic;
+} FFACE_Graphic_Struct;
+class FFACE_Graphic {
+public:
+    FFACE_Graphic_Struct* graphic;
+    FFACE_Graphic();
+    bool FFACE_ClearGraphic();
+    bool FFACE_DestroyGraphic();
+};
 
-/**
- * Function: FFACE_CreateGraphic
- *
- * Create & returns FFACE_CreateGraphic struct.
- *
- * Returns:
- * A pointer to the created FFACE_CreateGraphic
- */
-FFACE_Graphic* FFACE_CreateGraphic();
-
-
-/**
- * Function: FFACE_ClearGraphic
- *
- * Clear given FFACE_CreateGraphic
- *
- * Returns:
- * true
- */
-bool FFACE_ClearGraphic(FFACE_Graphic *graphic);
-
-/**
- * Function: FFACE_DestroyGraphic
- *
- * destroys FFACE_CreateGraphic
- *
- * Returns:
- * true
- */
-bool FFACE_DestroyGraphic(FFACE_Graphic *graphic);
 #endif //FFACE_GRAPHICS_H

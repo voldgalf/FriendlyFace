@@ -4,36 +4,30 @@
 
 #include "../include/graphics.hpp"
 
-
-FFACE_Graphic* FFACE_CreateGraphic() {
-
-    FFACE_Graphic* newGraphic = new FFACE_Graphic;
-    newGraphic->texture = nullptr;
-    newGraphic->surface = nullptr;
-    return newGraphic;
-}
-
-bool FFACE_ClearGraphic(FFACE_Graphic *graphic) {
-
-    if(graphic->texture) {
-        SDL_DestroyTexture(graphic->texture);
+FFACE_Graphic::FFACE_Graphic() {
+        graphic = new FFACE_Graphic_Struct;
         graphic->texture = nullptr;
-    }
-
-    if(graphic->surface) {
-        SDL_DestroySurface(graphic->surface);
-        graphic->surface = nullptr;   // optional safety
-    }
-
-
-    return true;
+        graphic->surface = nullptr;
 }
+bool FFACE_Graphic::FFACE_ClearGraphic() {
+        if(graphic->texture) {
+            SDL_DestroyTexture(graphic->texture);
+            graphic->texture = nullptr;
+        }
 
-bool FFACE_DestroyGraphic(FFACE_Graphic *graphic) {
+        if(graphic->surface) {
+            SDL_DestroySurface(graphic->surface);
+            graphic->surface = nullptr;   // optional safety
+        }
 
-    FFACE_ClearGraphic(graphic);
 
-    free(graphic);
+        return true;
+}
+bool FFACE_Graphic::FFACE_DestroyGraphic() {
 
-    return true;
+        FFACE_ClearGraphic();
+
+        free(graphic);
+
+        return true;
 }
