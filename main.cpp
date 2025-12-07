@@ -73,11 +73,10 @@ int main()
     ini.parse(iniStream);
 
     std::string currentEmotion = "default";
-
+    std::string faceURL;
     do {
 
         if(!faceGraphic.graphic->texture) {
-            std::string faceURL = "";
             inipp::get_value(ini.sections["EMOTION_URLS"], currentEmotion, faceURL);
             faceURL = "../imgs/" + faceURL;
             faceGraphic.graphic->texture = IMG_LoadTexture(display->renderer, faceURL.c_str());
