@@ -55,7 +55,7 @@ int main()
     display = FFACE_CreateDisplay();
 
     std::cout << "-Creating Window-\n";
-    display->window = SDL_CreateWindow("FriendlyFace", 480, 480, SDL_WINDOW_RESIZABLE);
+    display->window = SDL_CreateWindow("FriendlyFace", 480, 640, SDL_WINDOW_RESIZABLE);
     if(!display->window) {
         std::cout << SDL_GetError() << "\n";
     }
@@ -80,6 +80,8 @@ int main()
                 errorPopUp();
             }
         }
+
+        //SDL_SetTextureColorMod(faceGraphic.graphic->texture, 255, 0, 0);
 
         float scale = 0.75f * display->h / faceGraphic.graphic->texture->h;
 
