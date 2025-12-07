@@ -14,11 +14,10 @@ SDL_Event event;
 SDL_Color WHITE = {.r=255, .g=255, .b=255, .a=255};
 SDL_Color BLACK = {.r=0, .g=0, .b=0, .a=255};
 
-
-
 void errorPopUp() {
     SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR, "ERROR", SDL_GetError(), display->window);
 }
+
 
 bool FFACE_UpdateWindowSize() {
     if(!SDL_GetCurrentRenderOutputSize(display->renderer,&display->w, &display->h)) {
@@ -27,16 +26,18 @@ bool FFACE_UpdateWindowSize() {
     return true;
 }
 
-
 int main()
 {
 
     inipp::Ini<char> ini;
 
     std::ifstream iniStream("../config.ini");
+
     if(!iniStream.is_open()) {
         std::cout << "config.ini does NOT exist\n";
+        return -1;
     }
+
     ini.parse(iniStream);
 
     std::string dbServer = "";
@@ -46,7 +47,6 @@ int main()
     std::cout << dbServer << "\n";
 
     std::cout << "-Initializing SDL3-\n";
-
     if (!SDL_Init(SDL_INIT_EVENTS)) {
         std::cout << "SDL_Init Error: " << SDL_GetError() << "\n";
         return 1;
@@ -55,14 +55,12 @@ int main()
     display = FFACE_CreateDisplay();
 
     std::cout << "-Creating Window-\n";
-
     display->window = SDL_CreateWindow("FriendlyFace", 480, 480, SDL_WINDOW_RESIZABLE);
     if(!display->window) {
         std::cout << SDL_GetError() << "\n";
     }
 
     printf("-Creating Renderer-\n");
-
     display->renderer = SDL_CreateRenderer(display->window, NULL);
     if(!display->renderer) {
         std::cout << SDL_GetError() << "\n";
@@ -73,10 +71,11 @@ int main()
     FFACE_Graphic faceGraphic;
 
     FFACE_UpdateWindowSize();
+
     do {
 
         if(!faceGraphic.graphic->texture) {
-            faceGraphic.graphic->texture = IMG_LoadTexture(display->renderer, "../imgs/WorkerFace_Default.png");
+            faceGraphic.graphic->texture = IMG_LoadTexture(display->renderer, "../imgs/WorkerFace_Maintenance.png");
             if(!faceGraphic.graphic->texture) {
                 errorPopUp();
             }
@@ -96,8 +95,6 @@ int main()
 
         FFACE_SetRendererColor(display->renderer, WHITE);
 
-        //SDL_RenderRect(display->renderer, &faceGraphic.graphic->rect);
-
         if(!SDL_RenderTexture(display->renderer, faceGraphic.graphic->texture, NULL, &faceGraphic.graphic->rect)) {
             errorPopUp();
         }
@@ -105,7 +102,6 @@ int main()
         SDL_FlushRenderer(display->renderer);
         SDL_RenderPresent(display->renderer);
 
-        //events
         while(SDL_PollEvent(&event)) {
             if(event.type == SDL_EVENT_WINDOW_RESIZED) {
                 FFACE_UpdateWindowSize();
@@ -118,9 +114,6 @@ int main()
                 running = false;
             }
         }
-
-        //Clean Up
-        //FFACE_ClearGraphic(faceGraphic);
 
        SDL_Delay(40);
     } while(running);
