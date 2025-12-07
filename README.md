@@ -12,9 +12,7 @@ FriendlyFace is a C++ SDL program designed to display different faces depending 
 
 A separate thread updates `emotionValue` through ROS 2, avoiding interference with the main thread.
 
-### Installation
-
-#### Linux
+### Installing Dependencies
 
 ```bash
 # Update apt before continuing
@@ -27,11 +25,7 @@ sudo apt-get install libsdl3-dev libsdl3-image-dev
 sudo apt install build-essential cmake
 ```
 
-#### Windows
-
-Follow the SDL3 build process
-
-#### Building with CMake
+### Building with CMake
 
 ```bash
 # Install the RobotDevelopment repo (which includes FriendlyFace)
