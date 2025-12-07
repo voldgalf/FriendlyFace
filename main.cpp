@@ -18,10 +18,9 @@ void errorPopUp() {
     SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR, "ERROR", SDL_GetError(), display->window);
 }
 
-void errorPopUp(std::string str) {
+void errorPopUp(const std::string& str) {
     SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR, "ERROR", str.c_str(), display->window);
 }
-
 
 bool FFACE_UpdateWindowSize() {
     if(!SDL_GetCurrentRenderOutputSize(display->renderer,&display->w, &display->h)) {
